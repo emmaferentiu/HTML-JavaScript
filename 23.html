@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>lab12</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Comic SANS MS', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            color: #ff4081;
+        }
+        .cerc {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            transition: left 0.5s, top 0.5s;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+<script>
+    var form = document.createElement("form");
+
+    var labelNume = document.createElement("label");
+    labelNume.textContent = "Nume:";
+    var inputNume = document.createElement("input");
+    inputNume.type = "text";
+    inputNume.name = "nume";
+    inputNume.required = true;
+    labelNume.appendChild(inputNume);
+
+    
+    var labelPrenume = document.createElement("label");
+    labelPrenume.textContent = "Prenume:";
+    var inputPrenume = document.createElement("input");
+    inputPrenume.type = "text";
+    inputPrenume.name = "prenume";
+    inputPrenume.required = true;
+    labelPrenume.appendChild(inputPrenume);
+
+    var labelSex = document.createElement("label");
+    labelSex.textContent = "Sex:";
+    var inputSexMasculin = document.createElement("input");
+    inputSexMasculin.type = "radio";
+    inputSexMasculin.name = "sex";
+    inputSexMasculin.value = "masculin";
+    var labelSexMasculin = document.createElement("label");
+    labelSexMasculin.textContent = "Masculin";
+    labelSexMasculin.appendChild(inputSexMasculin);
+
+    var inputSexFeminin = document.createElement("input");
+    inputSexFeminin.type = "radio";
+    inputSexFeminin.name = "sex";
+    inputSexFeminin.value = "feminin";
+    var labelSexFeminin = document.createElement("label");
+    labelSexFeminin.textContent = "Feminin";
+    labelSexFeminin.appendChild(inputSexFeminin);
+
+    labelSex.appendChild(labelSexMasculin);
+    labelSex.appendChild(labelSexFeminin);
+
+
+    var labelDataNasterii = document.createElement("label");
+    labelDataNasterii.textContent = "Data nașterii:";
+    var inputDataNasterii = document.createElement("input");
+    inputDataNasterii.type = "date";
+    inputDataNasterii.name = "data_nasterii";
+    inputDataNasterii.required = true;
+    labelDataNasterii.appendChild(inputDataNasterii);
+
+
+    var labelEmail = document.createElement("label");
+    labelEmail.textContent = "Adresă de email:";
+    var inputEmail = document.createElement("input");
+    inputEmail.type = "text";
+    inputEmail.name = "email";
+    inputEmail.required = true;
+    labelEmail.appendChild(inputEmail);
+
+   
+    var labelTelefon = document.createElement("label");
+    labelTelefon.textContent = "Număr de telefon:";
+    var inputTelefon = document.createElement("input");
+    inputTelefon.type = "text";
+    inputTelefon.name = "telefon";
+    inputTelefon.required = true;
+    labelTelefon.appendChild(inputTelefon);
+
+    
+    var labelCunostinteProgramare = document.createElement("label");
+    labelCunostinteProgramare.textContent = "Cunoștințe de programare:";
+    var selectCunostinteProgramare = document.createElement("select");
+    selectCunostinteProgramare.multiple = true;
+    selectCunostinteProgramare.name = "cunostinte_programare";
+
+    var optionHTML = document.createElement("option");
+    optionHTML.value = "html";
+    optionHTML.text = "HTML";
+    selectCunostinteProgramare.appendChild(optionHTML);
+
+    var optionCSS = document.createElement("option");
+    optionCSS.value = "css";
+    optionCSS.text = "CSS";
+    selectCunostinteProgramare.appendChild(optionCSS);
+
+    var optionJS = document.createElement("option");
+    optionJS.value = "javascript";
+    optionJS.text = "JavaScript";
+    selectCunostinteProgramare.appendChild(optionJS);
+
+    labelCunostinteProgramare.appendChild(selectCunostinteProgramare);
+
+   
+    var labelObservatii = document.createElement("label");
+    labelObservatii.textContent = "Observații:";
+    var textobs = document.createElement("obs");
+    textobs.name = "observatii";
+    labelObservatii.appendChild(textobs);
+
+    
+    var buttonSubmit = document.createElement("button");
+    buttonSubmit.type = "button";  
+    buttonSubmit.textContent = "Submit";
+    buttonSubmit.addEventListener('click', function () {
+        if (validateForm()) {
+            sendFormData();
+        }
+    });
+
+    
+    form.appendChild(labelNume);
+ form.appendChild(document.createElement("br"));
+    form.appendChild(labelPrenume);
+form.appendChild(document.createElement("br"));
+    form.appendChild(labelSex);
+form.appendChild(document.createElement("br"));
+    form.appendChild(labelDataNasterii);
+form.appendChild(document.createElement("br"));
+    form.appendChild(labelEmail);
+form.appendChild(document.createElement("br"));
+    form.appendChild(labelTelefon);
+form.appendChild(document.createElement("br"));
+    form.appendChild(labelCunostinteProgramare);
+form.appendChild(document.createElement("br"));
+    form.appendChild(labelObservatii);
+form.appendChild(document.createElement("br"));
+    form.appendChild(buttonSubmit);
+form.appendChild(document.createElement("br"));
+
+
+    document.body.appendChild(form);
+    function validateForm() {
+       
+        var inputs = form.querySelectorAll("input, select, textarea");
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].hasAttribute("required") && !inputs[i].value.trim()) {
+                alert("Completati toate campurile.");
+                
+            }
+        }
+
+       
+        var dataNasterii = new Date(inputDataNasterii.value);
+        var today = new Date();
+        var varsta = today.getFullYear() - dataNasterii.getFullYear();
+        if (varsta < 18) {
+            alert("Varsta e minim 18.");
+         
+        }
+
+        
+        if (numarTelefon.length !== 10) {
+            alert("Numar de telefon trebuie saaiba 10 cifre.");
+        }
+
+        return true;
+    }
+
+   
+    function sendFormData() {
+        
+        alert("Datele au fost trimise cu succes.");
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> degradee</title>
+  <style>
+//FERENTIU EMMA LUCIANA
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .colorful-div {
+      width: 400px;
+      height: 100px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+ const numereIntregi = [-1, -2, 332, 43, -21, 68, 7232, 82, -1231, -130, 893, -34, 237, -7623, 189, -9323];
+const textNode = document.createTextNode(`Sirul initial: ${numereIntregi}`);
+ document.body.appendChild(textNode);
+
+const colorBox1 = document.createElement('div');
+      colorBox1.className = 'colorful-div';
+      colorBox1.style.backgroundColor= "blue";
+const pare= [];
+for(let i=0; i< numereIntregi.length; i++)
+{ let j = numereIntregi[i];
+  if( j >= 0 && j %2 ===0)
+    {  pare.push(j); }
+}
+const textNode2 = document.createTextNode(`Numerele  pare pozitive din sir: ${pare}`);
+ colorBox1.appendChild(textNode2);
+ document.body.appendChild(colorBox1);
+
+const colorBox2 = document.createElement('div');
+      colorBox2.className = 'colorful-div';
+       colorBox2.style.backgroundColor= "red";
+const negative= [];
+let sum=0;
+for(let i=0; i< numereIntregi.length; i++)
+{ let j = numereIntregi[i];
+  if( j < -100)
+    {  negative.push(j);
+       sum++; }
+}
+const textNode1 = document.createTextNode(`Numarul numerelor negative de 2 cire : ${sum} iar acestea sunt: ${negative}`);
+  colorBox2.appendChild(textNode1);
+ document.body.appendChild(colorBox2);
+
+const colorBox3 = document.createElement('div');
+      colorBox3.className = 'colorful-div';
+   colorBox3.style.backgroundColor= "yellow";
+
+const minime = [];
+for(let i=1; i< numereIntregi.length-1; i++)
+{  let j = numereIntregi[i];
+   let a = numereIntregi[i-1];
+   let b = numereIntregi[i+1];
+  if( j < a && j < b)
+      minime.push(j);
+  
+}
+const textNode3 = document.createTextNode(`Minimele locale: ${minime}`);
+ colorBox3.appendChild(textNode3);
+ document.body.appendChild(colorBox3);
+
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>lab10_problem3</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .elemente {
+            gap: 20px;
+        }
+
+        .elementul {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            border: 5px solid black;
+        }
+
+        .elementul.galben {
+            background-color: yellow;
+        }
+
+        .elementul.mov {
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="elemente" id="elemente"></div>
+
+    <script>
+       const text=document.createElement('div');
+       document.body.appendChild(text);
+  var count=0;
+            var a=0;
+        function desen() {
+            const displayer = document.getElementById("elemente");
+           
+displayer.innerHTML = "";
+            for(let i=0;i<4;i++){
+                 for(let j=0;j<4;j++){
+                    
+                        const elementul = document.createElement("div");
+                        elementul.classList.add("elementul");
+                        elementul.classList.add("galben");
+                        displayer.appendChild(elementul);
+                         elementul.addEventListener('mouseover', function() {
+                                                                   
+                                  elementul.classList.add("mov");
+                                  if (elementul.classList.contains('galben'))
+                                    {a++;}
+                                  elementul.classList.remove("galben");                                
+                                 //text.textContent=a;
+                                  
+                                         
+                            });
+                    } 
+                
+                displayer.appendChild(document.createElement('br'));
+            };
+        } 
+
+setInterval(counter,1000);
+function counter()
+{             count++;
+                if(a<16)
+                {text.textContent = "Timpul total de colorare a tuturor celulelor este "+count + " secunde"}
+  
+}
+        
+desen();
+   
+     
+       
+    </script>
+ </body>
+</html>

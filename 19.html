@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>file</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+
+function f1(){
+        var text = "";
+         var a=0;
+        var elem = document.getElementById("file1");
+        if(elem.files[0].type === 'image/jpeg' )
+          alert('fisierul e intr-adevar imagine, fiind jpeg')
+       
+         else if(elem.files[0].type === 'image/png' )
+          alert('fisierul e intr-adevar imagine, fiind png')
+              else if(elem.files[0].type === 'image/bmp' )
+                   alert('fisierul e intr-adevar imagine, fiind bmp')
+                else if(elem.files[0].type === 'image/gif' )
+                      alert('fisierul e intr-adevar imagine, fiind gif')
+
+           else alert('nu este imagine')
+           
+        
+       
+        
+}
+
+
+</script>
+
+</head>
+
+<body>
+
+<h2>file</h2>
+alege un fisier
+<form onSubmit="f1()">
+  <input type="file" name="file1" id="file1">
+  <input type="submit" value="OK">
+</form>
+
+
+</body>
+</html>

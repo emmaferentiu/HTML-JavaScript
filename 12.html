@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> degradee</title>
+  <style>
+ body {
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .colorful-div {
+      width: 100px;
+      height: 100px;
+      margin: 5px;
+      //background-color: red;
+    }
+ 
+   
+  </style>
+</head>
+<body>
+  <script>
+ 
+
+const colorBox1 = document.createElement('div');
+colorBox1.className= 'colorful-div'
+ document.body.appendChild(colorBox1);
+var count = 0;
+
+setInterval(counter,1000);
+function counter()
+{ count= count+10; //era prea lent sa trec prin toate 360
+   colorBox1.style.backgroundColor = `hsl(${count}, 100%, 50%)`;
+  
+}
+
+  </script>
+</body>
+</html>

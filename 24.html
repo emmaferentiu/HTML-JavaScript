@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <title>Generare lab12</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            color: #ff4081;
+        }
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<script>
+    var suma = 0;
+
+    function genereaza() {
+        return Math.floor(Math.random() * 11) + 10;
+    }
+
+  
+
+    function eliminaButon() {
+        var butoane = document.getElementsByTagName("button");
+        if (butoane.length > 0) {
+            var butonDeSters = butoane[butoane.length - 1];
+            suma -= parseInt(butonDeSters.textContent);
+            butonDeSters.parentNode.removeChild(butonDeSters);
+            text.textContent = "Suma: " + suma;
+        }
+    }
+
+    for (var i = 0; i < 10; i++) {
+        let numarAleator = genereaza()
+        var buton = document.createElement("button");
+        buton.textContent = numarAleator;
+        suma=suma+numarAleator;
+        buton.addEventListener("click", function () {
+            numarAleator++;
+            this.textContent = numarAleator;
+            suma++;
+           
+            text.textContent = "Suma: " + suma;
+            if (suma >200) {
+                eliminaButon();
+            }
+        });
+        document.body.appendChild(buton);
+    }
+
+    var text = document.createElement('div');
+    document.body.appendChild(text);
+    text.textContent = "Suma este: " + suma;
+      var text2 = document.createElement('div');
+    document.body.appendChild(text2);
+    text2.textContent = "Pragul este 200";
+
+</script>
+
+</body>
+</html>

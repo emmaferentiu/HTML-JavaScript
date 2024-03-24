@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> degradee</title>
+  <style>
+ body {
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .colorful-div {
+      width: 100px;
+      height: 100px;
+      margin: 5px;
+      
+    }
+    
+   
+  </style>
+</head>
+<body>
+  <script>
+ 
+
+const colorBox1 = document.createElement('div');
+colorBox1.className= 'colorful-div';
+ document.body.appendChild(colorBox1);
+ document.addEventListener("mousemove", function(event) {
+            var rect = colorBox1.getBoundingClientRect();
+
+            var mouseX = event.clientX;  //coordonatele mouse-ului
+            var mouseY = event.clientY;
+
+           
+            var distanceToCenter = Math.sqrt(Math.pow(mouseX - rect.left - rect.width / 2, 2) + Math.pow(mouseY - rect.top - rect.height / 2, 2));
+            var x=(distanceToCenter.toFixed(2)*60)/850; // in cazul ecranului meu distanta maxima era 850 si am facut o relatie de interdependenta
+            var x=x+20; // este mai placut vizual sa mergem doar in spectrul de lightness 20-80
+           
+        
+            colorBox1.innerText = `Distanta la centru: ${distanceToCenter.toFixed(2)}`;
+
+           colorBox1.style.backgroundColor = `hsl(120, 100%, ${x}%)`;
+        });
+
+
+
+
+  </script>
+</body>
+</html>

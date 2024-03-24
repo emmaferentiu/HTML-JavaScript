@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>lab12</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Comic SANS MS', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            color: #ff4081;
+        }
+        .colorful-div {
+      width: 200px;
+      height: 200px;
+      margin: 5px;
+      background-color:pink;
+      position: absolute;
+      top: 10%;
+      left: 30%;
+    }
+    </style>
+</head>
+
+<body>
+
+<script>
+    var a = 0;
+    var min = 0;
+    var maj = 0;
+    var cif = 0;
+    var spec = 0;
+
+    var h2 = document.createElement("h2");
+    h2.textContent = "Introduceti parola";
+
+    var h3 = document.createElement("h3");
+    h3.innerHTML = "Aceasta trebuie sa contina: <br>" +
+                    "* minim 6 caractere <br>" +
+                    "* majuscule <br>" +
+                    "* cifre <br>" +
+                    "* caractere speciale<br>";
+
+    
+    var form = document.createElement("form");
+
+    var passwordInput = document.createElement("input");
+    passwordInput.type = "password";
+    passwordInput.name = "p1";
+    passwordInput.id = "p1";
+
+    var submitInput = document.createElement("input");
+    submitInput.type = "submit";
+    submitInput.value = "OK";
+
+   
+    document.body.appendChild(h2);
+    document.body.appendChild(h3);
+    form.appendChild(document.createTextNode("Parola: "));
+    form.appendChild(passwordInput);
+    form.appendChild(document.createElement("br"));
+    form.appendChild(submitInput);
+    document.body.appendChild(form);
+    const colorBox1 = document.createElement('div');
+    colorBox1.className= 'colorful-div';
+     document.body.appendChild(colorBox1);
+     //var asa=document.getElementById("p1").value; //trebuie luata valoarea dupa ce asezi
+     const text=document.createElement('div');
+     document.body.appendChild(text);
+   
+var asa;
+  passwordInput.addEventListener('input', function () {
+        asa = passwordInput.value;
+        
+    });
+var c=0;
+document.addEventListener('keydown', function (event) {
+           
+           if (event.key >= 'a' && event.key <= 'z') {
+                        
+                         min++;
+                        if(min==1)
+                           c=c+2;
+                     }
+            var uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+          if (uppercaseLetters.includes(event.key)) {
+                         
+                         maj++;
+                          if(maj==1)
+                            c=c+2;
+                     }
+           if (event.key >= '0' && event.key <= '9') {
+                        
+                         cif++;
+                            if(cif==1)
+                              c=c+2;
+                     }
+           var specialCharacters = "!@#$%^&*";
+         if(specialCharacters.includes(event.key))
+            { 
+                      spec++;
+                      if(spec==1)
+                          c=c+2;
+           }
+      
+        a=spec+min+cif+maj;
+          if(a===6)
+            c=c+2;
+      text.textContent='Parola e de nota ' + c;
+         if(c==2)
+    {colorBox1.style.width = '240px';
+       colorBox1.style.height = '240px';
+      colorBox1.style.backgroundColor ='red';
+}
+         if(c==4)
+          {colorBox1.style.backgroundColor ='orange';
+               colorBox1.style.width = '280px';
+                colorBox1.style.height = '280px';
+ 
+}
+         if(c==6)
+          {colorBox1.style.backgroundColor ='yellow';
+         colorBox1.style.width = '320px';
+         colorBox1.style.height = '320px';}
+        if(c==10)
+          {colorBox1.style.backgroundColor ='green';
+         colorBox1.style.width = '360px';
+    colorBox1.style.height = '360px';
+       }
+
+          
+});
+</script>
+</body>
+</html>
+

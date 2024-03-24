@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> degradee</title>
+  <style>
+//FERENTIU EMMA LUCIANA
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .colorful-div {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <script>
+     function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+    const textNode = document.createTextNode('Aceste culori sunt generate aleator.');
+ document.body.appendChild(textNode);
+ document.body.appendChild(document.createElement('br'));
+    for (let i = 0; i < 10; i++) {
+      const colorBox = document.createElement('div');
+      colorBox.className = 'colorful-div';
+      const randomNum = getRandomNumber(1, 360);
+      colorBox.style.backgroundColor = `hsl(${randomNum}, 100%, 50%)`;
+      document.body.appendChild(colorBox);
+
+    }
+ document.body.appendChild(document.createElement('br'));
+const textNode2 = document.createTextNode('Aceste culori sunt predefinite.');
+ document.body.appendChild(textNode2);
+document.body.appendChild(document.createElement('br'));
+let j = 1;
+  for (let i = 0; i < 10; i++) {
+      const colorBox2 = document.createElement('div');
+      colorBox2.className = 'colorful-div';
+      colorBox2.style.backgroundColor = `hsl(${j}, 100%, 50%)`;
+      document.body.appendChild(colorBox2);
+      j=j+30;
+    }
+
+  </script>
+</body>
+</html>

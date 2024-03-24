@@ -1,0 +1,53 @@
+seteazăNume(nume) {
+    if(/\d/.test(nume) || nume.length <= 2){
+        this.nume = 'Jane';
+        console.log('Numele introdus nu este valid. Trebuie să fie mai lung de 2 caractere și nu poate conține cifre.')
+    }
+    else
+        this.nume = nume;
+}
+
+seteazăPrenume(prenume) {
+    if((/\d/.test(prenume)) || (prenume.length <= 2)){
+        this.prenume = 'Doe';
+        console.log('Prenumele introdus nu este valid. Trebuie să fie mai lung de 2 caractere și nu poate conține cifre.')
+    }
+    else
+        this.prenume = prenume;
+}
+
+seteazăDataNașterii(dob) {
+    const dată = new Date();
+    if (dob.getMonth() < dată.getMonth()){
+        if((dată.getFullYear() - dob.getFullYear()) < 18){
+            console.log('Elevul nu poate fi mai mic de 18 ani.')
+            this.dob = new Date(1970,0,1);
+        }
+        else
+            this.dob = dob;
+    }
+    else if (dob.getMonth() == dată.getMonth()){
+        if(dob.getDate() <= dată.getDate()){
+            if((dată.getFullYear() - dob.getFullYear()) < 18){
+                console.log('Elevul nu poate fi mai mic de 18 ani.')
+                this.dob = new Date(1970,0,1);
+            }
+            else
+                this.dob = dob;
+        }
+        else if((dată.getFullYear() - dob.getFullYear() - 1) < 18){
+            console.log('Elevul nu poate fi mai mic de 18 ani.')
+            this.dob = new Date(1970,0,1);
+        }
+        else
+            this.dob = dob;
+    }
+    else {
+        if ((dată.getFullYear() - dob.getFullYear() - 1) < 18){
+            console.log('Elevul nu poate fi mai mic de 18 ani.')
+            this.dob = new Date(1970,0,1);
+        }
+        else
+            this.dob = dob;
+    } 
+}

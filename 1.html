@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCITIU 1</title>
+</head>
+<body>
+
+
+<script>
+    
+    //FERENTIU EMMA LUCIANA PROBLEMA 1
+    let sir = [7, 6, 32, 44, 232, 345, 2, 43, 56, 4];
+    document.write("<p>Sirul pe care l-am definit initial " + sir+ "<p>");
+
+    let sir_cresc= sir.slice().sort((a, b) => a - b);
+    document.write("<p>Șirul ordonat crescător: " + sir_cresc + "</p>"); //afisez sirul crescator
+
+    let sir_desc = sir_cresc.slice().reverse(); //inversez sirul cresc   
+    document.write("<p>Șirul ordonat descrescător: " + sir_desc+ "</p>");
+
+    
+    let sirimpar1 = sir.filter(x => x% 2 !== 0);
+
+
+    document.write("<p>Șir impar varianta 1: " + sirimpar1+ "</p>");
+   let sirimpar2 = [];
+
+     for (let i = 0; i < sir.length; i++) {
+         if (sir[i] % 2 !== 0) {
+        sirimpar2.push(sir[i]);
+               }
+            }
+document.write("<p>Șir impar varianta 2: " + sirimpar2 + "</p>");
+    
+    let sir2 = [133, 134, 152, 23, 28, 42, 12];
+document.write("<p>Un al doilea sir aleator " + sir2+ "</p>");
+    let sirCombinat = [...sir, ...sir2];
+
+
+    document.write("<p>Șirurile combinate: " + sirCombinat + "</p>");
+</script>
+
+
+</body>
+</html>
+<style>
+body {
+    font-family: 'Comic SANS MS', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+color: #ff4081;
+}
+
+
+</style>

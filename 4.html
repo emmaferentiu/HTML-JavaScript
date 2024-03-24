@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROBLEMA4</title>
+</head>
+<body>
+
+<script>
+   class Student {
+    constructor(nume, prenume, dataNasterii, foaieMatricola) {
+        this.nume = nume;
+        this.prenume = prenume;
+        this.dataNasterii = new Date(dataNasterii);
+        this.foaieMatricola = foaieMatricola;
+        this.note = [];
+    }
+
+    afiseazaVarsta = () => {
+        const diferentaAni = new Date().getFullYear() - this.dataNasterii.getFullYear();
+        return diferentaAni;
+    }
+
+    afiseazaNotele = () => this.note.join(', ');
+
+    calculeazaMedia = () => {
+        if (this.note.length === 0) {
+            return 0;
+        }
+
+        let sumaNote = 0;
+        for (let i = 0; i < this.note.length; i++) {
+            sumaNote += this.note[i];
+        }
+
+        return sumaNote / this.note.length;
+    }
+
+    schimbaNume = noulNume => {
+        this.nume = noulNume;
+    }
+
+    adaugaNota = nota_noua => {
+        this.note.push(nota_noua);
+    }
+
+    afiseazaDetaliiStudenti = () => {
+        document.write(`<strong>Nume:</strong> ${this.nume}<br>`);
+        document.write(`<strong>Prenume:</strong> ${this.prenume}<br>`);
+        document.write(`<strong>Data Nasterii:</strong> ${this.dataNasterii.toISOString().split('T')[0]}<br>`);
+        document.write(`<strong>Foaie Matricola:</strong> ${this.foaieMatricola}<br>`);
+        document.write(`<strong>Note:</strong> ${this.afiseazaNotele()}<br>`);
+        document.write(`<strong>Medie:</strong> ${this.calculeazaMedia()}<br><br>`);
+    }
+}
+
+    let studenti = [
+        new Student("Rad", "Paula", "2002-03-23", "02121"),
+        new Student("Dumitrescu", "Radu", "2002-10-21", "02189"),
+        new Student("Popa", "Alina", "2001-08-12", "03212")
+    ];
+
+    studenti[0].adaugaNota(8);
+    studenti[0].adaugaNota(9);
+    studenti[1].adaugaNota(5);
+    studenti[1].adaugaNota(10);
+    studenti[2].adaugaNota(6);
+    studenti[2].adaugaNota(8);
+
+   
+    document.write("<h2>Studenți ordonați alfabetic:</h2>");
+    studenti.sort((a, b) => (a.nume + a.prenume).localeCompare(b.nume + b.prenume));
+     for (let i = 0; i < studenti.length; i++) {
+    studenti[i].afiseazaDetaliiStudenti();
+}
+
+    document.write("<h2>Studenți după medii:</h2>");
+    studenti.sort((a, b) => a.calculeazaMedia() - b.calculeazaMedia());
+   for (let i = 0; i < studenti.length; i++) {
+    studenti[i].afiseazaDetaliiStudenti();
+}
+
+    document.write("<h2>Studenți  după vârstă:</h2>");
+    studenti.sort((a, b) => a.afiseazaVarsta() - b.afiseazaVarsta());
+    for (let i = 0; i < studenti.length; i++) {
+    studenti[i].afiseazaDetaliiStudenti();
+}
+ studenti[0].adaugaNota(4);
+    studenti[0].adaugaNota(9);
+    studenti[1].adaugaNota(6);
+    studenti[1].adaugaNota(9);
+    studenti[2].adaugaNota(5);
+    studenti[2].adaugaNota(10);
+
+   document.write("<h2>Studenți ordonați dupa medii după adăugarea unui set nou de note:</h2>");
+studenti.sort((a, b) => a.calculeazaMedia() - b.calculeazaMedia());
+for (let i = 0; i < studenti.length; i++) {
+    studenti[i].afiseazaDetaliiStudenti();
+}
+   studenti[0].schimbaNume('Vasilescu');    
+    studenti[1].schimbaNume('Coman');
+    studenti[2].schimbaNume('Fort');
+
+  document.write("<h2>Studenți ordonați alfabetic dupa schimbarea numelui:</h2>");
+    studenti.sort((a, b) => (a.nume + a.prenume).localeCompare(b.nume + b.prenume));
+     for (let i = 0; i < studenti.length; i++) {
+    studenti[i].afiseazaDetaliiStudenti();
+}
+
+let nouStudent1 = new Student("Georgescu", "Pavel", "2001-01-20", "67390");
+
+
+studenti.push(nouStudent1);
+
+let nouStudent2 = new Student("Dumitreanu", "Andrei", "2003-01-21", "82222");
+studenti.push(nouStudent2);
+  document.write("<h2>Studenți ordonați alfabetic dupa adaugarea studentilor:</h2>");
+    studenti.sort((a, b) => (a.nume + a.prenume).localeCompare(b.nume + b.prenume));
+     for (let i = 0; i < studenti.length; i++) {
+    studenti[i].afiseazaDetaliiStudenti();
+}
+studenti.splice(0,1);
+studenti.splice(2,1);
+  document.write("<h2>Studenți ordonați alfabetic dupa eliminarea studentilor:</h2>");
+    studenti.sort((a, b) => (a.nume + a.prenume).localeCompare(b.nume + b.prenume));
+     for (let i = 0; i < studenti.length; i++) {
+    studenti[i].afiseazaDetaliiStudenti();
+}
+</script>
+
+</body>
+</html>
+
+<style>
+body {
+    font-family: 'Comic SANS MS', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+color: #ff4081;
+}
+
+
+</style>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>lab10_problem3</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="elemente" id="elemente"></div>
+
+    <script>
+        const text = document.createElement('div');
+        document.body.appendChild(text);
+
+        var adresaURL = window.location;
+
+        var textNode1 = document.createTextNode('Host: ' + adresaURL.host);
+        text.appendChild(textNode1);
+        text.appendChild(document.createElement('br'));
+
+        var textNode2 = document.createTextNode('Hostname: ' + adresaURL.hostname);
+        text.appendChild(textNode2);
+        text.appendChild(document.createElement('br'));
+
+        var textNode3 = document.createTextNode('Href: ' + adresaURL.href);
+        text.appendChild(textNode3);
+        text.appendChild(document.createElement('br'));
+
+        var textNode4 = document.createTextNode('Pathname: ' + adresaURL.pathname);
+        text.appendChild(textNode4);
+        text.appendChild(document.createElement('br'));
+
+        var textNode5 = document.createTextNode('Port: ' + adresaURL.port);
+        text.appendChild(textNode5);
+        text.appendChild(document.createElement('br'));
+
+        var textNode6 = document.createTextNode('Protocol: ' + adresaURL.protocol);
+        text.appendChild(textNode6);
+        text.appendChild(document.createElement('br'));
+        
+                var textNode7 = document.createTextNode('Folosesc Google Chrome');
+        text.appendChild(textNode7);
+        
+
+        
+    </script>
+</body>
+</html>

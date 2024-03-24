@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCITIU 2</title>
+</head>
+<body>
+
+<script>
+    let produse = {
+        "Telefon": 1200,
+        "Laptop": 2500,
+        "Tabletă": 800,
+        "Smartwatch": 300,
+        "Cameră foto": 1500
+    };
+
+ 
+    document.write("<h2>Cheile si valorile prin tiparire directa:</h2>");
+
+
+        document.write(Object.entries(produse));  //afisam cheile si valorile
+  
+
+    document.write("<h2> Valorile prin Iterarea Cheilor:</h2>");
+
+    for (let cheie in produse) {
+        document.write(`<li>Prețul pentru ${cheie}: ${produse[cheie]} RON</li>`);
+    }
+
+    document.write("<h2>Produsele ordonate după preț prin iterarea cheilor:</h2>");
+    const produse_sortate = Object.fromEntries(Object.entries(produse).sort(([, a], [, b]) => a - b));
+    for (let cheie in produse_sortate) {
+        document.write(`<li>${cheie}: ${produse_sortate[cheie]} RON</li>`);
+    }
+    document.write("<h2>Produsele ordonate după preț prin afisare directa:</h2>");
+    document.write(Object.entries(produse_sortate));
+</script>
+
+
+</body>
+</html>
+<style>
+body {
+    font-family: 'Comic SANS MS', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+color: #ff4081;
+}
+
+
+</style>

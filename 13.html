@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> degradee</title>
+  <style>
+//FERENTIU EMMA LUCIANA
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .color-box {
+        display:inline-block;
+            width: 80px;
+            height: 80px;
+            border: 5px solid black;
+    }
+   
+   
+  </style>
+</head>
+<body>
+  <script>
+      var a=20; 
+   const text=document.createElement('div');
+   document.body.appendChild(text);
+    for (let i = 0; i < 10; i++) {
+      const colorBox = document.createElement('div');
+      colorBox.className = 'color-box';
+       a=a+30;
+      colorBox.style.backgroundColor = `hsl(${a}, 100%, 50%)`;
+      document.body.appendChild(colorBox);
+       colorBox.addEventListener('mouseover', function() {
+      var culoareFond = getComputedStyle(colorBox).backgroundColor;
+       text.textContent='Ai trecut cu mouse-ul peste elementul cu culoarea de fundal: ' + culoareFond;
+    });
+      
+    }
+  </script>
+</body>
+</html>

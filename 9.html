@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>lab10_problem3</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+
+        .elemente {
+
+       
+            gap: 20px;
+            
+        }
+
+        .elementul {
+          display:inline-block;
+            width: 80px;
+            height: 80px;
+            border: 5px solid black;
+        }
+
+        .elementul.galben {
+            background-color: yellow;
+        }
+
+        .elementul.mov {
+            background-color: purple;
+        }
+    </style>
+    </head>
+
+    <body >
+    
+    <div class = "elemente" id="elemente">
+
+    </div>
+
+    <script>
+        
+        function desen() {
+
+            const mat = [
+                [1,0,0,0,1],
+                [0,1,0,0,1],
+                [0,0,1,0,1],
+                [0,0,0,1,1],
+            ];
+            const displayer = document.getElementById("elemente"); 
+
+            mat.forEach((row, rowIndex) => {
+                row.forEach((value, colIndex) =>{
+                    if (value === 1){
+                        const elementul = document.createElement("div");
+                        elementul.classList.add("elementul");
+                        elementul.classList.add("galben");
+                        displayer.appendChild(elementul);
+                    }
+                    else{
+                        const elementul = document.createElement("div");
+                        elementul.classList.add("elementul");
+                        elementul.classList.add("mov");
+                        displayer.appendChild(elementul);
+                    }
+                  
+                });
+                 displayer.appendChild(document.createElement('br'));
+            });
+
+        }
+
+        desen();
+    </script>
+ </body>
+</html>

@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>lab10_problem3</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div class="elemente" id="elemente"></div>
+
+    <script>
+       const text=document.createElement('div');
+       document.body.appendChild(text);
+     
+setInterval(counter,1000);
+function counter()
+{           
+                 var dataCurenta = new Date();
+                 var oraCurenta = dataCurenta.getHours();
+             var minuteCurente = dataCurenta.getMinutes();
+               var secundeCurente= dataCurenta.getSeconds();
+                text.textContent = oraCurenta + ':' + minuteCurente+':'+ secundeCurente;
+  
+}
+        
+
+     
+       
+    </script>
+ </body>
+</html>

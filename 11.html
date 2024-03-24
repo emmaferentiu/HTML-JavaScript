@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> degradee</title>
+  <style>
+//FERENTIU EMMA LUCIANA
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .colorful-div {
+      width: 400px;
+      height: 100px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+const initialText = "Ana212are8292m23e9re";
+
+const colorBox1 = document.createElement('div');
+      colorBox1.className = 'colorful-div';
+      colorBox1.style.backgroundColor= "blue";
+const letters = initialText.replace(/[^a-zA-Z]/g, '');
+const textNode2 = document.createTextNode(`Literele din sir: ${letters}`);
+ colorBox1.appendChild(textNode2);
+ document.body.appendChild(colorBox1);
+
+const colorBox2 = document.createElement('div');
+      colorBox2.className = 'colorful-div';
+       colorBox2.style.backgroundColor= "red";
+document.body.appendChild(document.createElement('br'));
+const numere = initialText.replace(/[^0-9]/g, '');
+const textNode1 = document.createTextNode(`Numerele din sir: ${numere}`);
+  colorBox2.appendChild(textNode1);
+ document.body.appendChild(colorBox2);
+
+const colorBox3 = document.createElement('div');
+      colorBox3.className = 'colorful-div';
+   colorBox3.style.backgroundColor= "yellow";
+document.body.appendChild(document.createElement('br'));
+const schimb = initialText.replace(/[0-9]/g, '*');
+const textNode3 = document.createTextNode(`Numerele din sir inlocuite cu *: ${schimb}`);
+ colorBox3.appendChild(textNode3);
+ document.body.appendChild(colorBox3);
+
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> degradee</title>
+  <style>
+//FERENTIU EMMA LUCIANA
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .color-box {
+      width: 4px;
+      height: 100vh;
+      float: left;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const numColors = 360; 
+    const colorBoxes = [];
+
+    for (let i = 0; i < numColors; i++) {
+      const colorBox = document.createElement('div');
+      colorBox.className = 'color-box';
+      colorBox.style.backgroundColor = `hsl(${i}, 100%, 50%)`;
+      document.body.appendChild(colorBox);
+
+      colorBoxes.push(colorBox);
+    }
+  </script>
+</body>
+</html>

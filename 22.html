@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>lab12</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Comic SANS MS', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            color: #ff4081;
+        }
+        .cerc {
+           width: 50px;
+        height: 50px;
+        background-color: red;
+        position: absolute;
+        transition: left 0.5s, top 0.5s;
+        border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+<script>
+    var h2 = document.createElement("h2");
+    h2.textContent = "Introduceti doua valori numerice intre 100-400";
+
+    var form = document.createElement("form");
+
+    var unu = document.createElement("input");
+    unu.type = "text";
+    
+
+    var doi = document.createElement("input");
+    doi.type = "text";
+
+
+    var submitInput = document.createElement("input");
+    submitInput.type = "submit";
+    submitInput.value = "OK";
+
+    document.body.appendChild(h2);
+    form.appendChild(document.createTextNode("Prima valoare: "));
+    form.appendChild(unu);
+    form.appendChild(document.createElement("br"));
+    form.appendChild(document.createTextNode("A doua valoare: "));
+    form.appendChild(doi);
+    form.appendChild(document.createElement("br"));
+    form.appendChild(submitInput);
+    document.body.appendChild(form);
+
+    const colorBox1 = document.createElement('div');
+    colorBox1.className = 'cerc'; 
+    document.body.appendChild(colorBox1);
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); 
+        pozitioneazaCerc(unu.value, doi.value);
+    });
+
+    function pozitioneazaCerc(val1, val2) {
+      
+
+        if (val1>= 100 && val1 <= 400 && val2 >= 100 && val2 <= 400) {
+            colorBox1.style.left = val1 + "px";
+            colorBox1.style.top = val2 + "px";
+        } else {
+            alert("Trebuie sa fie numere intre 100 si 400.");
+        }
+    }
+</script>
+
+</body>
+</html>
+

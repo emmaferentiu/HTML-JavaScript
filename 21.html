@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>lab12</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Comic SANS MS', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            color: #ff4081;
+        }
+    </style>
+</head>
+
+<body>
+
+<script>
+
+
+    var h2 = document.createElement("h2");
+    h2.textContent = "Introduceti 2 date";
+
+   
+    
+    var form = document.createElement("form");
+
+    var data1 = document.createElement("input");
+    data1.type = "date";
+    
+    var data2 = document.createElement("input");
+    data2.type = "date";
+
+  var submitInput = document.createElement("button");
+submitInput.type = "submit";  // Menține tipul submit
+submitInput.textContent = "COMPARA DATELE";
+    document.body.appendChild(h2);
+    form.appendChild(document.createTextNode("Data: "));
+    form.appendChild(data1);
+    form.appendChild(document.createElement("br"));
+    form.appendChild(document.createTextNode("Data: "));
+    form.appendChild(data2);
+     form.appendChild(document.createElement("br"));
+    form.appendChild(submitInput);     
+    document.body.appendChild(form);
+
+     const text=document.createElement('div');
+     document.body.appendChild(text);
+
+  form.onsubmit = function (event) {
+        event.preventDefault();  // Oprește comportamentul implicit al formularului
+
+        var date1 = new Date(data1.value);
+        var date2 = new Date(data2.value);
+
+        var dif = Math.abs((date2.getFullYear() - date1.getFullYear()) * 12 + date2.getMonth() - date1.getMonth());
+
+        if (dif> 3) 
+        {
+            text.textContent = 'Intervalul este mai mare de 3 luni.Datele sunt valide.';
+        } else 
+     {
+            text.textContent = 'Intervalul trebuie să fie mai mare de 3 luni.Date invalide.';
+        }
+    };
+    
+
+</script>
+</body>
+</html>

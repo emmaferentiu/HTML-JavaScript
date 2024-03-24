@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>lab10_problem3</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .elemente {
+            gap: 20px;
+        }
+
+        .elementul {
+            display: inline-block;
+            width: 55px;
+            height: 55px;
+            border: 5px solid black;
+            background-size: cover;
+        }
+
+        .elementul.galben {
+            background-image: url('https://medicveterinar.ro/wp-content/uploads/2014/12/Golden-Retriever-Cute-Puppies-Wallpaper.jpg');
+        }
+
+        .elementul.mov {
+            background-color: #89CFF0;
+        }
+        .elementul.negru {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="elemente" id="elemente"></div>
+   <button id="restartButton">Restart</button>
+   <button id="pauseButton">Pauza</button>
+    <script>
+        const mat = [
+            [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+            [1, 1, 0, 1, 0, 0, 1, 0, 1, 1],
+            [0, 0, 0, 0, 1, 1, 1, 0, 1, 0],
+            [1, 1, 1, 0, 1, 0, 1, 0, 1, 1],
+            [0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+            [1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 0, 0, 1, 0, 1, 0, 0, 0, 0],
+            [0, 1, 0, 1, 0, 1, 1, 1, 1, 0]
+        ];
+
+        const mat2 = [
+            [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+            [1, 1, 0, 1, 0, 0, 1, 0, 1, 1],
+            [0, 0, 0, 0, 1, 1, 1, 0, 1, 0],
+            [1, 1, 1, 0, 1, 0, 1, 0, 1, 1],
+            [0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+            [1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 0, 0, 1, 0, 1, 0, 0, 0, 0],
+            [0, 1, 0, 1, 0, 1, 1, 1, 1, 0]
+        ];
+
+        const displayer = document.getElementById("elemente");
+
+        function desen() {
+            displayer.innerHTML = "";
+            mat.forEach((row, rowIndex) => {
+                row.forEach((value, colIndex) => {
+                    const elementul = document.createElement("div");
+                    elementul.classList.add("elementul");
+                    if (value === 2) {
+                        elementul.classList.add("galben");
+                    } 
+                    if(value === 0)
+                    {
+                        elementul.classList.add("mov");
+                    }
+                    if(value===1)
+                    { elementul.classList.add("negru");
+                    }
+                    
+                    displayer.appendChild(elementul);
+                });
+                displayer.appendChild(document.createElement('br'));
+            });
+        }
+
+        desen();
+         var text = document.createElement('div');
+                        document.body.appendChild(text);
+         var text2 = document.createElement('div');
+                        document.body.appendChild(text2);
+        var a=0;
+        var b=0;
+        var isPaused = false;
+        document.addEventListener('mousemove', function (event) {
+             if (isPaused) {
+                return; 
+            }
+            const rect = displayer.getBoundingClientRect();
+            const x = event.clientX - rect.left; 
+            const y = event.clientY - rect.top; 
+
+
+            const colIndex = Math.floor(x / 55); 
+            const rowIndex = Math.floor(y / 55); 
+             
+            if(rowIndex===9 && colIndex===9)
+               { b++;  
+                alert("ai castigat!")
+               }
+            if(mat[rowIndex][colIndex]===1)
+                  {           a++;
+                        text.textContent = "Ai atins peretele de"+a+"ori";
+                       return;
+                  }
+            else
+            { 
+
+            
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < 10; j++) {
+                    mat[i][j] = mat2[i][j];
+                }
+            }
+
+            if (rowIndex >= 0 && rowIndex < 10 && colIndex >= 0 && colIndex < 10) {
+                mat[rowIndex][colIndex] = 2;
+            }
+
+            desen();
+            }
+        });
+ const pauseButton = document.getElementById("pauseButton");
+        pauseButton.addEventListener("click", function () {
+            isPaused = !isPaused; 
+        });
+var count=0;
+setInterval(counter,1000);
+function counter()
+{             
+                 if(b==0 && !isPaused)
+                { count++;
+                  text2.textContent = "Timpul final de realizare a labirntului este "+count + " secunde"}
+  
+}
+ const restartButton = document.getElementById("restartButton");
+        restartButton.addEventListener("click", function () {
+            a = 0;
+            b = 0;
+            count = 0;
+              text.textContent="Inca nu ai atins peretele";
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < 10; j++) {
+                    mat[i][j] = mat2[i][j];
+                }
+            }
+            
+
+            desen();
+        });
+    </script>
+</body>
+</html>
